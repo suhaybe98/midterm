@@ -1,0 +1,24 @@
+﻿.colid{
+    width:50px;
+    padding-right:5px;
+}
+.colname{
+    width:500px;
+}
+.colmark{
+    width:50px;
+}
+.colcode{
+    width:50px;
+    padding-right:5px;
+}
+.colcrd{
+    width:50px;
+}
+.colisbn{
+    width:160px;
+}
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th{
+    background-color:aqua;
+}
+

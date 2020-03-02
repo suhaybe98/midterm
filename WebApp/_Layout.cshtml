@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <link href="@Href("~/Content/bootstrap.css")" rel="stylesheet" media="screen" />
+    <link href="~/Content/CustomBootstrapOverrides.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.js"></script>
+    @RenderSection("head", required: false)
+</head>
+<body>
+
+    <!--this is the page tile-->
+    <div class="jumbotron">
+        <div class="container-fluid">
+            @RenderPage("~/_Menu.cshtml")<br />
+            <h3>@Page.Title</h3>
+        </div>
+    </div>
+    <!-- the page content from the content page-->
+    <div class="container">
+        <div class="row">
+            @RenderBody()
+        </div>
+    </div>
+
+</body>
+</html>

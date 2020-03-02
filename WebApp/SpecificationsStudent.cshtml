@@ -1,0 +1,145 @@
+﻿@{
+    Page.Title = "Razor Assessment";
+    Layout = "~/_Layout.cshtml";
+}
+
+<div>
+    <h4>Student Name: _________Suhaybe Egal_______________________________________</h4>
+    <h2>Instructions</h2>
+    <p>
+        This is an open book and an open classroom computer lab assessment. You must use the classroom computer to complete the lab assessment.
+        Use of your own computer or talking with your classmates during the lab assessment is not permitted.
+        <strong>Copying your lab files to an external device or your student space on the P drive is not permitted and will result in a mark of 0 (zero).</strong>
+    </p>
+    <h2>Lab Activity Setup</h2>
+    <ol>
+        <li>
+            Wait for instructions from your instructor as to how to obtain the starting kit.
+        </li>
+        <li>
+            Your starting kit will be a compressed file. Extract all files (Assessment Startup Kit and database .bak file).
+            &nbsp;<strong>Move</strong> the .bak file to a temporary folder on the root of your
+            C: drive. (You may need to create a temporary folder, call it Work.)
+        </li>
+        <li>
+            Navigate to the Assessment Startup Kit <strong>RazorMod</strong> directory.  Open the&nbsp; <strong>RazorMod.sln</strong> solution file that is
+            located in the <strong>RaszorMod</strong> folder.
+        </li>
+        <li>Open your <strong>SQL Server Management Studio</strong> and restore the assessment database using the extracted supplied .bak file.</li>
+        <li>
+            Submit this file <strong>according</strong> to your instructor's directions. <strong>
+                Failure to do so will result with a 0 (zero) being assigned to your work. You are responsible to ensure the submission contains your work.
+            </strong>
+        </li>
+    </ol><br /><br />
+    <h2>All code that has been supplied with the starting solution is correct. It DOES NOT need to be altered.</h2>
+    <h2>Note: Your database .bak file has been included with the startup kit. You will need to restore this database (from your temporary C: drive folder) to your machine <u>before</u> running your application.</h2>
+    <center>
+        <br /><br /><br /><br /><br /><br />
+        <h3>Sample of Data on Student Table.</h3>
+        <img src="~/Images/StudentData.png" alt="" />
+        <br /><br />
+        <h2>Marking</h2><br />
+        <table>
+            <tr>
+                <td width="350px">Task</td>
+                <td width="50px">Marks</td>
+            </tr>
+            <tr>
+                <td>index</td>
+                <td>1</td>
+            </tr>
+            <tr>
+                <td>Manage Student</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Edit Student Form/Validation</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Edit Student</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Delete Student</td>
+                <td>2</td>
+            </tr>
+
+        </table>
+    </center><br /><br />
+    <p>
+        <strong>TASK:</strong>From Solution Explorer view, navigate to the <strong>WebApp</strong>&nbsp;folder and open <strong>index.cshtml</strong>.
+        Alter this page to add your name, login id, section and instructor name.
+    </p>
+    <br />
+    <p><strong>TASK:</strong>From Solution Explorer view, navigate to the <strong>WebApp</strong>&nbsp;folder and open <strong>ManageStudent.cshtml</strong></p>
+    <ol>
+        <li>
+            Write the HTML markup code to display on the page the columns <strong>StudentID, StudentName</strong> and <strong>Credits</strong>
+            of all rows from the <strong>Student</strong> table of the <strong>CPSC1517DB</strong> database.
+            Add a column with an "Edit" hyperlink for the user to select a row to edit. You may use <strong>either</strong> a &lt;table&gt; or WebGrid.
+        </li>
+
+        <li>
+            Clicking on the "Edit" hyperlink will forward page navigation to&nbsp; <strong>EditStudent.cshtml</strong> along with a
+            query string with the&nbsp; <strong>StudentId</strong> value from the row to edit.
+        </li>
+    </ol><br />
+    <center>
+        SQL query is: SELECT StudentId, StudentName, Credits FROM Student ORDER BY StudentName<br /><br />
+        <img src="~/Images/ManageStudent.png" alt="" height="350" />
+    </center><br />
+    <p><strong>TASK:</strong>From Solution Explorer view, navigate to the <strong>WebApp</strong>  folder and open <strong>EditStudent.cshtml</strong></p>
+    <ol>
+        <li>
+            Write the code to create the HTML form that is shown below. You <strong><u>do not</u></strong> need to match the        layout <strong>exactly</strong>.
+            You must have the following controls: 1 <strong>readonly</strong> text field (for StudentID), 2            editable text fields (for Student Name and Credits),
+            2 submit buttons and 1 hyperlink. The “Back to Manage Student” hyperlink navigates to <strong>ManageStudent.cshtml</strong>.
+            Populate the form field values using the value for the  <strong>StudentId</strong> that is passed into this page. Your Sql query will return a single
+            line.<br /><br />
+            <center>
+                SQL query is: SELECT StudentId, StudentName, Credits FROM Student WHERE StudentID = &#64;0<br /><br />
+                <img src="~/Images/EditStudent.png" alt="" height="350" />
+            </center>
+        </li>
+        <br />
+        <br />
+
+        <li>
+            Using razor syntax, write the code to process the <strong>Update</strong> button submission as follows:
+            <ul>
+                <li>validate the StudentName and Credits fields as required</li>
+                <li>validate the StudentName field to be 1 to 50 characters.</li>
+                <li>validate the Credits field to be within the range 0 to 100.</li>
+                <li>update the <strong>Student</strong> table using the <strong>StudentName</strong> and&nbsp; <strong>Credits</strong> and the matching <strong>Studentid</strong> value.</li>
+                <li>display a feedback on the same page on the status of the update operation.</li>
+                <li>include appropriate friendly error handling with Try/Catch.</li>
+
+            </ul>
+            <br /><center>
+                SQL query is: Update Student SET StudentName = &#64;0, Credits = &#64;1 WHERE StudentID = &#64;2<br />
+                @*<img src="~/Images/StudentData.png" alt="" />*@
+            </center>
+        </li>
+        <br />
+
+        <li>
+            Using razor syntax, write the code to process the <strong>Delete</strong>&nbsp; button submission as follows:
+            <ul>
+                <li>Using a JavaScript confirmation dialog to confirm the delete operation with the user</li>
+                <li>If the user confirms the request then delete from the&nbsp; <strong>Student</strong> database table.</li>
+                <li>Display a feedback on the same page on the status of the update operation</li>
+                <li>include appropriate friendly error handling with Try/Catch.</li>
+            </ul>
+            <br /><center>
+                SQL query is: Delete Student WHERE StudentID = &#64;0
+                <img src="~/Images/ConfirmStudentDelete.jpg" alt="" />
+
+                <img src="~/Images/JavascriptConfirmation.png" alt="" />
+            </center>
+        </li>
+    </ol>
+
+
+</div>
